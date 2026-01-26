@@ -32,3 +32,11 @@ config:
         clientSecret: ${AZURE_CLIENT_SECRET}
         tenant: ${AZURE_TENANT_ID}
         redirectURI: https://dex.kdvops.com/callback
+
+
+staticClients:
+  - id: kiali
+    name: Kiali
+    redirectURIs:
+      - https://kiali.kdvops.com/kiali
+    secretEnv: KIALI_CLIENT_SECRET
