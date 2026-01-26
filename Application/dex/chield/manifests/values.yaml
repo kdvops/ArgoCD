@@ -24,6 +24,13 @@ config:
   oauth2:
     skipApprovalScreen: true
 
+  staticClients:
+    - id: kiali
+      name: Kiali
+      redirectURIs:
+        - https://kiali.kdvops.com/kiali
+      secretEnv: KIALI_CLIENT_SECRET
+
   connectors:
     - type: microsoft
       id: azure
@@ -35,9 +42,3 @@ config:
         redirectURI: https://dex.kdvops.com/callback
 
 
-staticClients:
-  - id: kiali
-    name: Kiali
-    redirectURIs:
-      - https://kiali.kdvops.com/kiali
-    secretEnv: KIALI_CLIENT_SECRET
