@@ -1,25 +1,10 @@
 # =========================
 # Environment variables
 # =========================
-env:
-  - name: AZURE_CLIENT_ID
-    valueFrom:
-      secretKeyRef:
-        name: dex-azure-secrets
-        key: AZURE_CLIENT_ID
-
-  - name: AZURE_CLIENT_SECRET
-    valueFrom:
-      secretKeyRef:
-        name: dex-azure-secrets
-        key: AZURE_CLIENT_SECRET
-
-  - name: AZURE_TENANT_ID
-    valueFrom:
-      secretKeyRef:
-        name: dex-azure-secrets
-        key: AZURE_TENANT_ID
-
+envFrom:
+  - secretRef:
+      name: dex-azure-secrets
+      
 
 # =========================
 # Dex configuration
