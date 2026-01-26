@@ -35,7 +35,7 @@ config:
         inCluster: true
 
     web:
-      http: 0.0.0.0:5556
+      http: "0.0.0.0:5556"
 
     oauth2:
       skipApprovalScreen: true
