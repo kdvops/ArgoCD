@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: kiali-vs
+  namespace: kiali-operator
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: kiali.kdvops.com
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+spec:
+  hosts:
+  - "kiali.kdvops.com"
+  gateways:
+  - istio-system/kdvops-gateway
+  http:
+  - route:
+    - destination:
+        host: kiali
+        port:
+          number: 20001
