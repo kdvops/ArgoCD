@@ -1,0 +1,51 @@
+# =========================
+# Environment variables
+# =========================
+env:
+  - name: AZURE_CLIENT_ID
+    valueFrom:
+      secretKeyRef:
+        name: dex-azure-secrets
+        key: AZURE_CLIENT_ID
+
+  - name: AZURE_CLIENT_SECRET
+    valueFrom:
+      secretKeyRef:
+        name: dex-azure-secrets
+        key: AZURE_CLIENT_SECRET
+
+  - name: AZURE_TENANT_ID
+    valueFrom:
+      secretKeyRef:
+        name: dex-azure-secrets
+        key: AZURE_TENANT_ID
+
+
+# =========================
+# Dex configuration
+# =========================
+config:
+  enabled: true
+  configFile: |
+    issuer: https://dex.kdvops.com
+
+    storage:
+      type: kubernetes
+      config:
+        inCluster: true
+
+    web:
+      http: 0.0.0.0:5556
+
+    oauth2:
+      skipApprovalScreen: true
+
+    connectors:
+      - type: microsoft
+        id: azure
+        name: Azure Entra ID
+        config:
+          clientID: ${AZURE_CLIENT_ID}
+          clientSecret: ${AZURE_CLIENT_SECRET}
+          tenant: ${AZURE_TENANT_ID}
+          redirectURI: https://dex.kdvops.com/callback
