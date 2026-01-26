@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/kdvops/ArgoCD.git
     targetRevision: HEAD
-    path: Application/dex
+    path: Application/dex/chield
     directory:
       recurse: true
       jsonnet: {}
