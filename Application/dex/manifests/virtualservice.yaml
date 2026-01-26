@@ -5,7 +5,7 @@ metadata:
   namespace: dex
 spec:
   hosts:
-  - dex.tu-dominio.com
+  - dex.kdvops.com
   gateways:
   - istio-system/main-gateway
   http:
