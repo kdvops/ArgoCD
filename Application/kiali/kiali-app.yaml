@@ -29,7 +29,7 @@ spec:
               strategy: openid
               openid:
                 client_id: kiali
-                client_secret: KIALI_CLIENT_SECRET
+                client_secret: ${KIALI_CLIENT_SECRET}
                 issuer_uri: https://dex.kdvops.com
                 scopes:
                   - openid
@@ -39,6 +39,10 @@ spec:
   
   
             deployment:
+              envFrom:
+                - secretRef:
+                    name: kiali-oidc-secret
+                
               accessible_namespaces:
                 - "**"
   
