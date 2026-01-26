@@ -25,22 +25,27 @@ env:
 # Dex configuration
 # =========================
 config:
-  issuer: https://dex.kdvops.com
+  enabled: true
+  configFile: |
+    issuer: https://dex.kdvops.com
 
-  storage:
-    type: kubernetes
-    config:
-      inCluster: true
-
-  web:
-    http: 0.0.0.0:5556
-
-  connectors:
-    - type: microsoft
-      id: azure
-      name: Azure Entra ID
+    storage:
+      type: kubernetes
       config:
-        clientID: ${AZURE_CLIENT_ID}
-        clientSecret: ${AZURE_CLIENT_SECRET}
-        tenant: ${AZURE_TENANT_ID}
-        redirectURI: https://dex.kdvops.com/callback
+        inCluster: true
+
+    web:
+      http: 0.0.0.0:5556
+
+    oauth2:
+      skipApprovalScreen: true
+
+    connectors:
+      - type: microsoft
+        id: azure
+        name: Azure Entra ID
+        config:
+          clientID: ${AZURE_CLIENT_ID}
+          clientSecret: ${AZURE_CLIENT_SECRET}
+          tenant: ${AZURE_TENANT_ID}
+          redirectURI: https://dex.kdvops.com/callback
