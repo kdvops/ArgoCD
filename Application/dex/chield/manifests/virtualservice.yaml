@@ -7,7 +7,7 @@ spec:
   hosts:
   - dex.kdvops.com
   gateways:
-  - istio-system/main-gateway
+  - istio-system/kdvops-gateway
   http:
   - route:
     - destination:
