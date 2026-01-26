@@ -12,8 +12,25 @@ spec:
     targetRevision: "*"
     helm:
       values: |
+        env:
+        - name: AZURE_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: dex-azure-secrets
+              key: AZURE_CLIENT_ID
+        - name: AZURE_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: dex-azure-secrets
+              key: AZURE_CLIENT_SECRET
+        - name: AZURE_TENANT_ID
+          valueFrom:
+            secretKeyRef:
+              name: dex-azure-secrets
+              key: AZURE_TENANT_ID
+
         config:
-          issuer: https://dex.tu-dominio.com
+          issuer: https://dex.kdvops.com
 
           storage:
             type: kubernetes
@@ -24,20 +41,14 @@ spec:
             http: 0.0.0.0:5556
 
           connectors:
-          - type: ldap
-            id: ldap
-            name: ActiveDirectory
+          - type: microsoft
+            id: azure
+            name: Azure Entra ID
             config:
-              host: ad.tu-dominio.local:389
-              insecureNoSSL: true
-              bindDN: CN=svc_ldap,OU=ServiceAccounts,DC=corp,DC=local
-              bindPW: ${LDAP_BIND_PW}
-              userSearch:
-                baseDN: OU=Users,DC=corp,DC=local
-                username: sAMAccountName
-                idAttr: DN
-                emailAttr: mail
-                nameAttr: cn
+              clientID: ${AZURE_CLIENT_ID}
+              clientSecret: ${AZURE_CLIENT_SECRET}
+              tenant: ${AZURE_TENANT_ID}
+              redirectURI: https://dex.kdvops.com/callback
 
   destination:
     server: https://kubernetes.default.svc
