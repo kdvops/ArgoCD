@@ -28,7 +28,7 @@ config:
     - id: kiali
       name: Kiali
       redirectURIs:
-        - https://kiali.kdvops.com/kiali
+        - https://kiali.kdvops.com:20001/kiali
       secretEnv: KIALI_CLIENT_SECRET
 
   connectors:
