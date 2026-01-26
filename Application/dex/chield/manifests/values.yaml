@@ -4,7 +4,8 @@
 envFrom:
   - secretRef:
       name: dex-azure-secrets
-
+  - secretRef:
+      name: dex-kiali-secret
 
 # =========================
 # Dex configuration
