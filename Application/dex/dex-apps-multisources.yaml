@@ -17,9 +17,10 @@ spec:
     - repoURL: https://github.com/kdvops/ArgoCD.git
       targetRevision: HEAD
       ref: values
+
+    - repoURL: https://github.com/kdvops/ArgoCD.git
+      targetRevision: HEAD
       path: Application/dex/chield/manifests
-
-
     
   destination:
     server: https://kubernetes.default.svc
