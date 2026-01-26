@@ -4,33 +4,31 @@
 envFrom:
   - secretRef:
       name: dex-azure-secrets
-      
+
 
 # =========================
 # Dex configuration
 # =========================
 config:
-  enabled: true
-  configFile: |
-    issuer: https://dex.kdvops.com
+  issuer: https://dex.kdvops.com
 
-    storage:
-      type: kubernetes
+  storage:
+    type: kubernetes
+    config:
+      inCluster: true
+
+  web:
+    http: "0.0.0.0:5556"
+
+  oauth2:
+    skipApprovalScreen: true
+
+  connectors:
+    - type: microsoft
+      id: azure
+      name: Azure Entra ID
       config:
-        inCluster: true
-
-    web:
-      http: "0.0.0.0:5556"
-
-    oauth2:
-      skipApprovalScreen: true
-
-    connectors:
-      - type: microsoft
-        id: azure
-        name: Azure Entra ID
-        config:
-          clientID: ${AZURE_CLIENT_ID}
-          clientSecret: ${AZURE_CLIENT_SECRET}
-          tenant: ${AZURE_TENANT_ID}
-          redirectURI: https://dex.kdvops.com/callback
+        clientID: ${AZURE_CLIENT_ID}
+        clientSecret: ${AZURE_CLIENT_SECRET}
+        tenant: ${AZURE_TENANT_ID}
+        redirectURI: https://dex.kdvops.com/callback
