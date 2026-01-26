@@ -12,8 +12,15 @@ spec:
   gateways:
   - istio-system/kdvops-gateway
   http:
-  - route:
-    - destination:
-        host: kiali
-        port:
-          number: 20001
+    - match:
+        - uri:
+            prefix: /kiali
+      route:
+        - destination:
+            host: kiali
+            port:
+              number: 20001
+      headers:
+        request:
+          set:
+            X-Forwarded-Proto: https
