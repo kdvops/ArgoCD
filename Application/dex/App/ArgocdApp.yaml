@@ -1,0 +1,51 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dex
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://charts.dexidp.io
+    chart: dex
+    targetRevision: "*"
+    helm:
+      values: |
+        config:
+          issuer: https://dex.tu-dominio.com
+
+          storage:
+            type: kubernetes
+            config:
+              inCluster: true
+
+          web:
+            http: 0.0.0.0:5556
+
+          connectors:
+          - type: ldap
+            id: ldap
+            name: ActiveDirectory
+            config:
+              host: ad.tu-dominio.local:389
+              insecureNoSSL: true
+              bindDN: CN=svc_ldap,OU=ServiceAccounts,DC=corp,DC=local
+              bindPW: ${LDAP_BIND_PW}
+              userSearch:
+                baseDN: OU=Users,DC=corp,DC=local
+                username: sAMAccountName
+                idAttr: DN
+                emailAttr: mail
+                nameAttr: cn
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dex
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
