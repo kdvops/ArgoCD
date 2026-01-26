@@ -20,7 +20,7 @@ spec:
             host: kiali
             port:
               number: 20001
-      #headers:
-      #  request:
-      #    set:
-      #      X-Forwarded-Proto: https
+      headers:
+        request:
+          set:
+            X-Forwarded-Proto: https
