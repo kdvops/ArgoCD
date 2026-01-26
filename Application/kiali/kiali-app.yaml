@@ -1,0 +1,64 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kiali
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/ignore-health-checks: |
+      kiali.io/Kiali
+spec:
+  project: default
+
+  source:
+    repoURL: https://kiali.org/helm-charts
+    chart: kiali-operator
+    targetRevision: "*"
+    helm:
+      releaseName: kiali-operator
+      values: |
+        cr:
+          create: true
+
+        crSpec:
+          istio_namespace: istio-system
+
+          #auth:
+          #  strategy: anonymous
+
+          auth:
+            strategy: openid
+            openid:
+              client_id: kiali
+              client_secret: KIALI_CLIENT_SECRET
+              issuer_uri: https://dex.kdvops.com
+              scopes:
+                - openid
+                - profile
+                - email
+              username_claim: email
+
+
+          deployment:
+            accessible_namespaces:
+              - "**"
+
+          external_services:
+            prometheus:
+              url: http://prometheus-server.monitoring:80
+
+            grafana:
+              enabled: true
+              internal_url: http://grafana.monitoring:3000
+              auth:
+                type: none
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kiali-operator
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
