@@ -26,12 +26,28 @@ spec:
           #  - secretRef:
           #      name: kiali-server-env
           env:
+
+            - name: KIALI_SERVER_WEB_FQDN
+              value: kiali.kdvops.com
+  
+            - name: KIALI_SERVER_WEB_PORT
+              value: "443"
+  
+            - name: KIALI_SERVER_WEB_SCHEME
+              value: https
+  
+            - name: KIALI_SERVER_WEB_ROOT
+              value: /kiali
+
             - name: KIALI_CLIENT_SECRET
               valueFrom:
                 secretKeyRef:
                   name: kiali-secret
                   key: KIALI_CLIENT_SECRET
+
+
                   
+
     - repoURL: https://github.com/kdvops/ArgoCD.git
       targetRevision: HEAD
       path: Application/kiali/chield/manifests
