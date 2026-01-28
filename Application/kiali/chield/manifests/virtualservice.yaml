@@ -12,10 +12,10 @@ spec:
   gateways:
     - istio-system/kdvops-gateway
   http:
-    - match:
-        - uri:
-            prefix: /
-      headers:
+    #- match:
+    #    - uri:
+    #        prefix: /
+    - headers:
         request:
           set:
             X-Forwarded-Proto: https
