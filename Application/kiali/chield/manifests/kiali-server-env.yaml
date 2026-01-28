@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: kiali-server-env
+  namespace: kiali-operator
+type: Opaque
+stringData:
+  KIALI_SERVER_WEB_FQDN: kiali.kdvops.com
+  KIALI_SERVER_WEB_PORT: "443"
+  KIALI_SERVER_WEB_SCHEME: https
+  KIALI_SERVER_WEB_ROOT: /kiali
