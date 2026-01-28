@@ -31,9 +31,9 @@ spec:
       
   deployment:
     cluster_wide_access: true
-    envFrom:
-      - secretRef:
-          name: kiali-server-env
+    #envFrom:
+    #  - secretRef:
+    #      name: kiali-server-env
     #envFrom:
     #  - secretRef:
     #      name: kiali-secret
