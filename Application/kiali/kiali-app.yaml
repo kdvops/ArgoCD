@@ -22,6 +22,15 @@ spec:
             enabled: true
             verbosity: "1"
             enableProfiler: false
+          #envFrom:
+          #  - secretRef:
+          #      name: kiali-server-env
+          env:
+            - name: KIALI_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: kiali-server-env
+                  key: KIALI_CLIENT_SECRET
                   
     - repoURL: https://github.com/kdvops/ArgoCD.git
       targetRevision: HEAD
