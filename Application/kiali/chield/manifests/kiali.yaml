@@ -12,6 +12,8 @@ spec:
       #client_secret: ${KIALI_CLIENT_SECRET} 
       api_token: access_token # access_token | id_token
       issuer_uri: https://dex.kdvops.com
+      additional_request_params:
+        prompt: login
       scopes:
         - openid
         - profile
