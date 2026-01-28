@@ -12,15 +12,15 @@ spec:
   gateways:
   - istio-system/kdvops-gateway
   http:
-  - match:
-      - uri:
-          prefix: /kiali
-    headers:
-      request:
-        set:
-          X-Forwarded-Proto: "https"
-          X-Forwarded-Port: "443"
-    route:
+  #- match:
+  #    - uri:
+  #        prefix: /kiali
+  #  headers:
+  #    request:
+  #      set:
+  #        X-Forwarded-Proto: "https"
+  #        X-Forwarded-Port: "443"
+  - route:
     - destination:
         host: kiali.kiali-operator.svc.cluster.local
         port:
