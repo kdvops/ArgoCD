@@ -18,8 +18,7 @@ spec:
         values: |
           cr:
             create: true
-  
-            Spec:
+              spec:
               namespace: istio-system
     
               auth:
