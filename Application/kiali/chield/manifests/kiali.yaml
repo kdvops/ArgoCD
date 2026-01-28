@@ -9,7 +9,7 @@ spec:
     strategy: openid
     openid:
       client_id: kiali
-      client_secret: super-strong-secret # | ${KIALI_CLIENT_SECRET} 
+      #client_secret: super-strong-secret # | ${KIALI_CLIENT_SECRET} 
       api_token: access_token # access_token | id_token
       issuer_uri: https://dex.kdvops.com
       scopes:
