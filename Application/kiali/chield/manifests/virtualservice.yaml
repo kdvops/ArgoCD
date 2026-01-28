@@ -14,6 +14,6 @@ spec:
   http:
   - route:
     - destination:
-        host: dex.dex.svc.cluster.local
+        host: kiali.kiali-operator.svc.cluster.local
         port:
           number: 5556
