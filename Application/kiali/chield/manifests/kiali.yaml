@@ -31,6 +31,6 @@ spec:
 
     grafana:
       enabled: true
-      internal_url: http://grafana.monitoring:3000
+      internal_url: http://grafana.monitoring:80
       auth:
         type: none
