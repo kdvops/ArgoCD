@@ -21,13 +21,13 @@ spec:
 
   server:
     web_root: /kiali
-    base_path: /kiali
     web_fqdn: https://kiali.kdvops.com
-    web_scheme: https
-    #require_auth: true
-    cookies:
-      same_site: None
-      secure: true
+    require_auth: true
+    #web_scheme: https
+    #base_path: /kiali
+    #cookies:
+    #  same_site: None
+    #  secure: true
       
   deployment:
     #envFrom:
