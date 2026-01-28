@@ -29,6 +29,7 @@ config:
       name: Kiali
       redirectURIs:
         - https://kiali.kdvops.com/kiali
+        - https://kiali2.kdvops.com/kiali
         - http://localhost:3000/kiali
         - http://kiali.kdvops.com:20001/kiali
 #        - https://kiali.kdvops.com/kiali/
