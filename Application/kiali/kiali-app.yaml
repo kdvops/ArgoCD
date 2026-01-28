@@ -18,6 +18,10 @@ spec:
         values: |
           cr:
             create: false
+          debug:
+            enabled: true
+            verbosity: "1"
+            enableProfiler: false
                   
     - repoURL: https://github.com/kdvops/ArgoCD.git
       targetRevision: HEAD
