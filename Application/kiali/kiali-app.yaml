@@ -17,39 +17,7 @@ spec:
         releaseName: kiali-operator
         values: |
           cr:
-            create: true
-            namespace: istio-system
-            spec:
-              auth:
-                strategy: anonymous
-                #strategy: openid
-                #openid:
-                #  client_id: kiali
-                #  client_secret: ${KIALI_CLIENT_SECRET}
-                #  issuer_uri: https://dex.kdvops.com
-                #  scopes:
-                #    - openid
-                #    - profile
-                #    - email
-                #  username_claim: email
-
-              deployment:
-                envFrom:
-                  - secretRef:
-                      name: kiali-oidc-secret
-                  
-                accessible_namespaces:
-                  - "**"
-    
-              external_services:
-                prometheus:
-                  url: http://prometheus-server.monitoring:80
-    
-                grafana:
-                  enabled: true
-                  internal_url: http://grafana.monitoring:3000
-                  auth:
-                    type: none
+            create: false
                   
     - repoURL: https://github.com/kdvops/ArgoCD.git
       targetRevision: HEAD
