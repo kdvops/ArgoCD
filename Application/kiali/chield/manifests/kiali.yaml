@@ -10,13 +10,25 @@ spec:
     #openid:
     #  client_id: kiali
     #  client_secret: ${KIALI_CLIENT_SECRET}
+    #  api_token: access_token # access_token | id_token
     #  issuer_uri: https://dex.kdvops.com
     #  scopes:
     #    - openid
     #    - profile
     #    - email
-    #  username_claim: email
+    #    - groups
+    #  username_claim: preferred_username
 
+  server:
+    web_root: /kiali
+    base_path: /kiali
+    web_fqdn: https://kiali.kdvops.com
+    web_scheme: https
+    #require_auth: true
+    cookies:
+      same_site: None
+      secure: true
+      
   deployment:
     #envFrom:
     #  - secretRef:
