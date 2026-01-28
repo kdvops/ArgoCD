@@ -30,6 +30,9 @@ spec:
     #  secure: true
       
   deployment:
+    envFrom:
+      - secretRef:
+          name: kiali-secret
     #envFrom:
     #  - secretRef:
     #      name: kiali-oidc-secret
