@@ -1,11 +1,11 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: kiali-vs
+  name: kiali-vs2
   namespace: kiali-operator
 spec:
   hosts:
-    - kiali.kdvops.com
+    - kiali2.kdvops.com
   gateways:
     - istio-system/kdvops-gateway
 
@@ -18,7 +18,7 @@ spec:
           set:
             X-Forwarded-Proto: "https"
             X-Forwarded-Port: "443"
-            X-Forwarded-Host: "kiali.kdvops.com"
+            X-Forwarded-Host: "kiali2.kdvops.com"
 
       route:
         - destination:
