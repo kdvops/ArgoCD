@@ -30,6 +30,7 @@ config:
       redirectURIs:
         - https://kiali.kdvops.com/kiali
         - http://localhost:3000/kiali
+        - http://kiali.kdvops.com:20001/kiali
 #        - https://kiali.kdvops.com/kiali/
 #        - https://kiali.kdvops.com/kiali/api/auth/openid_redirect
       secretEnv: KIALI_CLIENT_SECRET
