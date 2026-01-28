@@ -24,7 +24,7 @@ spec:
     web_fqdn: https://kiali.kdvops.com
     #require_auth: true
     #web_scheme: https  # no reconoce
-    base_path: /kiali
+    #base_path: /kiali  # no reconoce
     #cookies:
     #  same_site: None
     #  secure: true
