@@ -18,8 +18,8 @@ spec:
         values: |
           cr:
             create: true
+            namespace: istio-system
               spec:
-                namespace: istio-system
                 auth:
                   strategy: anonymous
                   #strategy: openid
