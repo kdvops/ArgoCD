@@ -19,11 +19,11 @@ spec:
     #    - groups
     #  username_claim: preferred_username
 
-  #server:
-    #web_root: /kiali
-    #web_fqdn: https://kiali.kdvops.com
+  server:
+    web_root: /kiali
+    web_fqdn: https://kiali.kdvops.com
     #require_auth: true
-    #web_scheme: https
+    web_scheme: https
     #base_path: /kiali
     #cookies:
     #  same_site: None
