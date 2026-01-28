@@ -16,4 +16,4 @@ spec:
     - destination:
         host: kiali.kiali-operator.svc.cluster.local
         port:
-          number: 5556
+          number: 20001
