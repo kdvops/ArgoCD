@@ -5,21 +5,21 @@ metadata:
   namespace: kiali-operator
 spec:
   auth:
-    #strategy: anonymous
-    strategy: openid
-    openid:
-      client_id: kiali
-      #client_secret: ${KIALI_CLIENT_SECRET} 
-      api_token: access_token # access_token | id_token
-      issuer_uri: https://dex.kdvops.com
-      additional_request_params:
-        prompt: login
-      scopes:
-        - openid
-        - profile
-        - email
-        - groups
-      username_claim: preferred_username
+    strategy: anonymous
+    #strategy: openid
+    #openid:
+    #  client_id: kiali
+    #  #client_secret: ${KIALI_CLIENT_SECRET} 
+    #  api_token: access_token # access_token | id_token
+    #  issuer_uri: https://dex.kdvops.com
+    #  additional_request_params:
+    #    prompt: login
+    #  scopes:
+    #    - openid
+    #    - profile
+    #    - email
+    #    - groups
+    #  username_claim: preferred_username
 
   server:
     web_root: /kiali
